@@ -3,6 +3,7 @@ import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import HeroTop from "./(blog)/HeroTop";
 import ArticleCard from "@/components/custom/ArticleCard";
+import MySkills from "./_home/Skills";
 const articles = [
   {
     title: "Power of JavaScript",
@@ -74,7 +75,7 @@ const MainPage = () => {
       {/* end of top hero */}
       {/* <div className="flex gap-4 justify-center"> */}
       <Tabs defaultValue="project" className="w-full">
-        <TabsList>
+        <TabsList className="mb-8">
           <TabsTrigger value="project">Projects</TabsTrigger>
           <TabsTrigger value="skills">Skills</TabsTrigger>
           <TabsTrigger value="carrier">Carrier</TabsTrigger>
@@ -95,7 +96,9 @@ const MainPage = () => {
             ))}
           </div>
         </TabsContent>
-        <TabsContent value="password">Change your password here.</TabsContent>
+        <TabsContent value="skills">
+          <MySkills />
+        </TabsContent>
       </Tabs>
       {/* </div> */}
     </section>

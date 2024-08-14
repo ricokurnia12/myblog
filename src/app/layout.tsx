@@ -17,17 +17,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <ThemeProvider attribute="class">
-        <body className={roboto.className}>
-          <main className="bg-body min-h-screen scroll-smooth text-text">
+    <html lang="en" suppressHydrationWarning>
+      <body className={roboto.className}>
+        <ThemeProvider attribute="class">
+          <main className="bg-body min-h-screen pb-4 scroll-smooth text-text z-50">
             <SectionContainer>
               <MainNavbar />
               {children}
             </SectionContainer>
           </main>
-        </body>
-      </ThemeProvider>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
