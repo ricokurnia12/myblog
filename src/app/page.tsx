@@ -4,6 +4,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import HeroTop from "./(blog)/HeroTop";
 import ArticleCard from "@/components/custom/ArticleCard";
 import MySkills from "./_home/Skills";
+import Timeline from "@/components/custom/TimeLine";
 const articles = [
   {
     title: "Power of JavaScript",
@@ -98,6 +99,9 @@ const MainPage = () => {
         </TabsContent>
         <TabsContent value="skills">
           <MySkills />
+        </TabsContent>
+        <TabsContent value="carrier">
+          <Timeline />
         </TabsContent>
       </Tabs>
       {/* </div> */}

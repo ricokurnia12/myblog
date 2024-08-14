@@ -9,51 +9,79 @@ import { Input } from "../ui/input";
 import { ButtonRetro } from "../custom/ButtonRetro";
 import { Button } from "../ui/button";
 import ToggleTheme from "../custom/ToggleTheme";
+
 export default function MainNavbar() {
   return (
-    <header className="sticky top-0 z-40 w-full border-b bg-body">
-      <div className="container flex h-16 items-center justify-between px-4 md:px-6">
+    <header className="sticky top-0 z-40 w-full max-w-[100vw] border-b bg-body">
+      <div className="flex h-16 items-center justify-between px-4 md:px-6">
         <div className="flex">
           <Link href="#" className="mr-6 flex items-center" prefetch={false}>
             <MountainIcon className="h-6 w-6" />
             <span className="sr-only">Logo</span>
           </Link>
-          <div className="flex w-full max-w-sm items-center space-x-2">
+          <div className="hidden sm:flex w-full max-w-sm items-center space-x-2">
             <Input
               type="email"
               placeholder="Search Article"
               className="shadow-retro-sm"
             />
-            <ButtonRetro  size={"sm"} type="submit">
+            <ButtonRetro size={"sm"} type="submit">
               Search
             </ButtonRetro>
           </div>
         </div>
-        <nav className="hidden items-center space-x-6 md:flex">
-          {/* untuk menu lainya  */}
+
+        {/* Mobile Search Bar */}
+        <div className="sm:hidden flex-grow">
+          <Input
+            type="email"
+            placeholder="Search Article"
+            className="shadow-retro-sm w-full"
+          />
+        </div>
+
+        {/* navigation */}
+        <nav className="hidden md:flex items-center space-x-6">
           <Button
             variant="ghost"
             size="sm"
             className="relative hover:bg-primary"
           >
             About me
-            {/* <ChevronDownIcon className="ml-2 h-4 w-4" /> */}
           </Button>
           <Button variant="ghost" size="sm" className="relative">
             Blogs
-            {/* <ChevronDownIcon className="ml-2 h-4 w-4" /> */}
           </Button>
           <Button variant="ghost" size="sm" className="relative">
             Connect with Me
-            {/* <ChevronDownIcon className="ml-2 h-4 w-4" /> */}
           </Button>
           <ToggleTheme />
         </nav>
-        <div className="md:hidden">
-          {/* <Button variant="ghost" size="icon" className="rounded-full">
-                        <MenuIcon className="h-6 w-6" />
-                        <span className="sr-only">Toggle menu</span>
-                    </Button> */}
+        {/* end of navigation */}
+
+        {/* Hamburger Menu for Mobile */}
+        <div className="flex md:hidden items-center">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" size="sm">
+                <MenuIcon className="h-6 w-6" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuItem asChild>
+                <Link href="#">About me</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="#">Blogs</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="#">Connect with Me</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <ToggleTheme />
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       </div>
     </header>
@@ -75,6 +103,26 @@ function MountainIcon(props: any) {
       strokeLinejoin="round"
     >
       <path d="m8 3 4 8 5-5 5 15H2L8 3z" />
+    </svg>
+  );
+}
+
+function MenuIcon(props: any) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth="2"
+      stroke="currentColor"
+      className="w-6 h-6"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M4 6h16M4 12h16M4 18h16"
+      />
     </svg>
   );
 }

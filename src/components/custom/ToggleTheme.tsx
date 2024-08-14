@@ -3,7 +3,7 @@ import React, { useRef, useEffect } from "react";
 import { useTheme } from "next-themes";
 import { Button } from "../ui/button";
 import { flushSync } from "react-dom";
-
+import { SunIcon, MoonIcon } from "@radix-ui/react-icons";
 // Extend the Document interface to include startViewTransition
 declare global {
   interface Document {
@@ -59,11 +59,12 @@ const ToggleTheme = () => {
 
   return (
     <Button
+      variant={'ghost'}
       ref={ref}
       onClick={() => toggle(theme === "dark")}
       className=""
     >
-      Toggle Mode
+      {theme === "dark" ? <SunIcon /> : <MoonIcon />}
     </Button>
   );
 };
