@@ -1,0 +1,61 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  name      String?
+  email     String?  @unique
+  password  String
+  role      String   @default("user")
+  createdAt DateTime @default(now()) @map(name: "created_at")
+  updatedAt DateTime @updatedAt @map(name: "updated_at")
+  posts     Post[]
+
+  @@map(name: "users")
+}
+
+model Category {
+  id        String   @id @default(uuid())
+  name      String   @unique
+  posts     Post[]   @relation("PostCategories", references: [id], fields: [id])
+  createdAt DateTime @default(now()) @map(name: "created_at")
+  updatedAt DateTime @updatedAt @map(name: "updated_at")
+
+  @@map(name: "categories")
+}
+
+model Post {
+  id        String     @id @default(uuid())
+  title     String
+  slug      String
+  content   String?
+  published Boolean    @default(false)
+  authorId  String
+  author    User       @relation(fields: [authorId], references: [id])
+  categories Category[] @relation("PostCategories", references: [id], fields: [id])
+  createdAt DateTime @default(now()) @map(name: "created_at")
+  updatedAt DateTime @updatedAt @map(name: "updated_at")
+
+  @@map("posts")
+}
+
+// Join table for many-to-many relationship between Post and Category
+model _PostToCategory {
+  postId     String
+  categoryId String
+
+  post     Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  category Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now()) @map(name: "created_at")
+  updatedAt DateTime @updatedAt @map(name: "updated_at")
+
+  @@id([postId, categoryId])
+  @@map("_PostToCategory")
+}
