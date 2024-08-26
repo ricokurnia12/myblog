@@ -5,13 +5,13 @@ import React from "react";
 const ArticleCard = ({ title, author, date, content, imgSrc }: any) => {
   return (
     <div className="max-w-sm group border bg-card  cursor-pointer hover:bg-primary dark:hover:text-[#111827] border-black rounded-lg shadow-[5px_5px_0px_0px_rgba(0,0,0)] p-4 h-96 overflow-hidden">
-      <div className=" w-full rounded-t-lg overflow-hidden ">
+      <div className=" w-full rounded-lg overflow-hidden ">
         <Image
           height={160}
-          width={160}
+          width={320}
           src={imgSrc}
           alt={title}
-          className="h-40 w-full object-cover   "
+          className="h-40 w-full object-cover "
         />
       </div>
       <div className="px-4 py-2">

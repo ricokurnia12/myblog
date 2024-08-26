@@ -1,6 +1,6 @@
 'use client'
 import { ColumnDef } from '@tanstack/react-table';
-import { dataSkills } from '@/contents/dataSkills';
+import { dataSkills } from '@/data/dataSkills';
 import { Skill } from '@/types/skills.type';
 import TableComponent from '@/components/table/table-component';
 import Image from 'next/image';

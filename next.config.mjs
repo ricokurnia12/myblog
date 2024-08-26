@@ -1,5 +1,9 @@
 import createMDX from "@next/mdx";
+import remarkSlug from 'remark-slug';
+import remarkToc from 'remark-toc';
+
 /** @type {import('next').NextConfig} */
+
 const nextConfig = {
   images: {
     remotePatterns: [
@@ -15,8 +19,13 @@ const nextConfig = {
 };
 
 const withMDX = createMDX({
-  // Add markdown plugins here, as desired
+  extension: /\.mdx?$/,
+  options: {
+    remarkPlugins: [
+      remarkSlug,
+      remarkToc,
+    ],
+  },
 });
 
-// Merge MDX config with Next.js config
 export default withMDX(nextConfig);

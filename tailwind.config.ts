@@ -19,10 +19,10 @@ const config = {
     },
     extend: {
       boxShadow: {
-        "retro-sm": "3px 3px 0px 0px rgba(0, 0, 0)", // Small shadow
-        "retro-md": "5px 5px 0px 0px rgba(0, 0, 0)", // Medium shadow (default)
-        "retro-lg": "8px 8px 0px 0px rgba(0, 0, 0)", // Large shadow
-        retro: "5px 5px 0px 0px rgba(0, 0, 0)", // Default shadow (alias for retro-md)
+        "retro-sm": "3px 3px 0px 0px rgba(0, 0, 0)",
+        "retro-md": "5px 5px 0px 0px rgba(0, 0, 0)",
+        "retro-lg": "8px 8px 0px 0px rgba(0, 0, 0)",
+        retro: "5px 5px 0px 0px rgba(0, 0, 0)",
       },
       colors: {
         primary: "var(--color-primary)",
@@ -45,11 +45,34 @@ const config = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      typography: (theme: any) => ({
+        DEFAULT: {
+          css: {
+            table: {
+              width: '100%',
+              borderCollapse: 'collapse',
+            },
+            thead: {
+              borderBottom: `2px solid ${theme('colors.gray.200')}`,
+            },
+            th: {
+              padding: theme('spacing.2'),
+              borderBottom: `1px solid ${theme('colors.gray.200')}`,
+              textAlign: 'left',
+            },
+            td: {
+              padding: theme('spacing.2'),
+              borderBottom: `1px solid ${theme('colors.gray.200')}`,
+              textAlign: 'left',
+            },
+          },
+        },
+      }),
     },
   },
   plugins: [
     require("tailwindcss-animate"),
-    require("@tailwindcss/typography"), // Add the typography plugin here
+    require("@tailwindcss/typography"), // Typography plugin to style MDX content
   ],
 } satisfies Config;
 

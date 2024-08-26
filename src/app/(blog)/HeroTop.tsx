@@ -4,7 +4,7 @@ import ArticleCard from "@/components/custom/ArticleCard";
 import ArticleCardHorizontal from "@/components/custom/HorizontalCard";
 import HeroCard from "@/components/custom/HeroCard";
 import Heroimg from "../../assets/heroimg.png";
-import Hello from "../../contents/hello.mdx";
+import Hello from "../../data/hello.mdx";
 import Image from "next/image";
 const HeroTop = () => {
   return (
