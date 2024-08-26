@@ -1,31 +1,29 @@
-'use client';
-import React from 'react';
-import { marked } from 'marked';
-import welcome from '../../../../data/welcome.md'
-const markdownText = `
-# Sample Markdown
+import React from "react";
+import Post from "./post";
 
-This is a sample markdown text with a table.
+interface PageProps {
+  params: {
+    slug: string;
+  };
+}
 
-| Branch  | Commit           |
-| ------- | ---------------- |
-| main    | 0123456789abcdef |
-| staging | fedcba9876543210 |
 
-More content here.
-`;
+const Page = async ({ params }: PageProps) => {
+  console.log(params);
 
-const processMarkdown = (markdown) => {
-    const html = marked(markdown); // Convert markdown to HTML using marked
-    return <div dangerouslySetInnerHTML={{ __html: html }} />;
+
+  const response = await fetch(
+    `http://localhost:3000/api/user/post/${params.slug}`
+  );
+
+
+  const data = await response.json(); // 
+
+  return (
+    <div>
+      <Post mdxContent={data.data} />
+    </div>
+  );
 };
 
-export default function Post() {
-    const content = processMarkdown(markdownText);
-    console.log(welcome)
-    return (
-        <div className='prose prose-h1:text-text prose-p:text-text overflow-x-auto'>
-            {content}
-        </div>
-    );
-}
+export default Page;
