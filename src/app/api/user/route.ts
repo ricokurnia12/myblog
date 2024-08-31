@@ -6,10 +6,11 @@ export async function GET() {
 
 This is a sample markdown text with a table.
 
-| Branch  | Commit           |
-| ------- | ---------------- |
-| main    | 0123456789abcdef |
-| staging | fedcba9876543210 |
+| Tables   |      Are      |  Cool |
+|----------|:-------------:|------:|
+| col 1 is |  left-aligned | $1600 |
+| col 2 is |    centered   |   $12 |
+| col 3 is | right-aligned |    $1 |
 
 More content here.`;
 

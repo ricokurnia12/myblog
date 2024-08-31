@@ -1,8 +1,12 @@
-import createMDX from "@next/mdx";
-import remarkSlug from 'remark-slug';
-import remarkToc from 'remark-toc';
-
-/** @type {import('next').NextConfig} */
+import mdx from "@next/mdx";
+import remarkGfm from "remark-gfm";
+const withMDX = mdx({
+  extension: /\.mdx?$/,
+  options: {
+    remarkPlugins: [remarkGfm],
+    rehypePlugins: [],
+  },
+});
 
 const nextConfig = {
   images: {
@@ -17,15 +21,5 @@ const nextConfig = {
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
   // Optionally, add any other Next.js config below
 };
-
-const withMDX = createMDX({
-  extension: /\.mdx?$/,
-  options: {
-    remarkPlugins: [
-      remarkSlug,
-      remarkToc,
-    ],
-  },
-});
 
 export default withMDX(nextConfig);
