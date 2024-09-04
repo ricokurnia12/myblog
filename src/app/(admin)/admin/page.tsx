@@ -1,7 +1,12 @@
 import React from "react";
+import Editor2 from "./Editor";
 
-const AdminPage = () => {
-  return <div>Admin page</div>;
+const page = () => {
+  return (
+    <div>
+      <Editor2 />
+    </div>
+  );
 };
 
-export default AdminPage;
+export default page;
