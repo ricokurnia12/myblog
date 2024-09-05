@@ -4,6 +4,7 @@ import "./globals.css";
 import SectionContainer from "@/components/layouts/SectionContainer";
 import MainNavbar from "@/components/layouts/Navbar";
 import { ThemeProvider } from "next-themes";
+import "./prosemirror.css";
 const roboto = Roboto_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
