@@ -20,7 +20,7 @@ const Post = ({ content }: { content: string }) => {
   const markup = { __html: content };
 
   return (
-    <div className="grid grid-cols-12">
+    <div className="grid grid-cols-12 gap-4">
       <Suspense fallback={<>Loading table of contents...</>}>
         <TableOfContents headings={headings} />
       </Suspense>

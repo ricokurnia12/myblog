@@ -4,7 +4,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 
 const TableOfContents = ({ headings }: { headings: string[] }) => {
   return (
-    <Card className="col-span-3 h-fit bg-opacity-20">
+    <Card className="col-span-3 h-fit bg-opacity-20 shadow-sm">
       <CardHeader>
         <CardTitle>Table of Contents</CardTitle>
       </CardHeader>
