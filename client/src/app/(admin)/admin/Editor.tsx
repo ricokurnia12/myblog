@@ -5,7 +5,7 @@ import { JSONContent } from "novel";
 import { defaultValue } from "./default-value";
 const Editor2 = () => {
   const [value, setValue] = React.useState<string>("");
-
+  console.log(value);
 
   const defaultValue = {
     type: "doc",

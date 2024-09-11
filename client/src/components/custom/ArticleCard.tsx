@@ -1,8 +1,22 @@
 // src/components/ArticleCard.js
 import Image from "next/image";
 import React from "react";
-// import Image from "next/image";
-const ArticleCard = ({ title, author, date, content, imgSrc }: any) => {
+import { StaticImageData } from "next/image";
+interface ArticleCardProps {
+  title: string;
+  author: string;
+  date: string;
+  imgSrc: string | StaticImageData;
+  content: string;
+}
+
+const ArticleCard: React.FC<ArticleCardProps> = ({
+  title,
+  author,
+  date,
+  imgSrc,
+  content,
+}) => {
   return (
     <div className="max-w-sm group border bg-card  cursor-pointer hover:bg-primary dark:hover:text-[#111827] border-black rounded-lg shadow-[5px_5px_0px_0px_rgba(0,0,0)] p-4 h-96 overflow-hidden">
       <div className=" w-full rounded-lg overflow-hidden ">

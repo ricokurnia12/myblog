@@ -9,6 +9,7 @@ const withMDX = mdx({
 });
 
 const nextConfig = {
+  transpilePackages: ["next-mdx-remote"],
   images: {
     remotePatterns: [
       {
@@ -16,6 +17,9 @@ const nextConfig = {
         hostname: "**",
       },
     ],
+  },
+  env: {
+    API: process.env.API,
   },
   // Configure `pageExtensions` to include markdown and MDX files
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
