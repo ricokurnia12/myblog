@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Heroimg from "../../assets/heroimg.png";
-import Hello from "../../data/hello.mdx";
+import Hello from "../../data/hello.md";
 import Image from "next/image";
 
 const HeroTop = () => {

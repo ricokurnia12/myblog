@@ -5,6 +5,8 @@ import SectionContainer from "@/components/layouts/SectionContainer";
 import MainNavbar from "@/components/layouts/Navbar";
 import { ThemeProvider } from "next-themes";
 import "./prosemirror.css";
+import Footer from "@/components/layouts/Footer";
+import { Suspense } from "react";
 const roboto = Roboto_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -14,20 +16,27 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  isAdmin,
 }: Readonly<{
   children: React.ReactNode;
+  isAdmin: boolean;
 }>) {
+
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={roboto.className}>
-        <ThemeProvider attribute="class">
-          <main className="bg-body min-h-screen pb-4 scroll-smooth text-text z-50">
-            <SectionContainer>
-              <MainNavbar />
-              {children}
-            </SectionContainer>
-          </main>
-        </ThemeProvider>
+        <Suspense fallback={<p>..Loading</p>}>
+          <ThemeProvider attribute="class">
+            <main className="bg-body min-h-screen pb-4 scroll-smooth text-text z-50">
+              <SectionContainer>
+                <MainNavbar />
+                {children}
+                <Footer />
+              </SectionContainer>
+            </main>
+          </ThemeProvider>
+        </Suspense>
       </body>
     </html>
   );

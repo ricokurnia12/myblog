@@ -1,4 +1,4 @@
-import Link from "next/link";
+"use client";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -9,8 +9,16 @@ import { Input } from "../ui/input";
 import { ButtonRetro } from "../custom/ButtonRetro";
 import { Button } from "../ui/button";
 import ToggleTheme from "../custom/ToggleTheme";
-
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 export default function MainNavbar() {
+  const pathName = usePathname();
+
+  const dataNavbar = [
+    { path: "/", title: "About Me" },
+    { path: "/blog", title: "Blog" },
+    { path: "/social", title: "Connect with Me" },
+  ];
   return (
     <header className="sticky mb-8 top-0 z-40 w-full max-w-[100vw] border-b bg-body">
       <div className="flex h-16 items-center justify-between px-4 md:px-6">
@@ -23,7 +31,7 @@ export default function MainNavbar() {
             <Input
               type="email"
               placeholder="Search Article"
-              className="shadow-retro-sm"
+              className="shadow-retro-sm rounded-none"
             />
             <ButtonRetro size={"sm"} type="submit">
               Search
@@ -42,19 +50,22 @@ export default function MainNavbar() {
 
         {/* navigation */}
         <nav className="hidden md:flex items-center space-x-6">
-          <Button
-            variant="ghost"
-            size="sm"
-            className="relative hover:bg-primary"
-          >
-            About me
-          </Button>
-          <Button variant="ghost" size="sm" className="relative">
-            Blogs
-          </Button>
-          <Button variant="ghost" size="sm" className="relative">
-            Connect with Me
-          </Button>
+          {dataNavbar.map((el, i) => {
+            const regex = new RegExp(`^${el.path}(/.*)?$`);
+            const isActive = regex.test(pathName);
+            return (
+              <Link href={el.path} key={i}>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className={`relative ${isActive ? "bg-primary" : ""}`}
+                >
+                  {el.title}
+                </Button>
+              </Link>
+            );
+          })}
+
           <ToggleTheme />
         </nav>
         {/* end of navigation */}
