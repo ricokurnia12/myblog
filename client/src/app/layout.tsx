@@ -21,8 +21,6 @@ export default function RootLayout({
   children: React.ReactNode;
   isAdmin: boolean;
 }>) {
-
-
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={roboto.className}>

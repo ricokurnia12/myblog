@@ -69,46 +69,44 @@ const articles = [
 
 const MainPage = () => {
   return (
-    <RootLayout isAdmin={false}>
-      <section>
-        {/* <HeroSection/> */}
-        {/* top hero */}
-        <HeroTop />
+    <section>
+      {/* <HeroSection/> */}
+      {/* top hero */}
+      <HeroTop />
 
-        {/* end of top hero */}
-        {/* <div className="flex gap-4 justify-center"> */}
-        <Tabs defaultValue="project" className="w-full">
-          <TabsList className="mb-8">
-            <TabsTrigger value="project">Projects</TabsTrigger>
-            <TabsTrigger value="skills">Skills</TabsTrigger>
-            <TabsTrigger value="carrier">Carrier</TabsTrigger>
-            <TabsTrigger value="education">Education</TabsTrigger>
-          </TabsList>
-          <TabsContent value="project">
-            <div className="grid grid-cols-12 gap-8">
-              {articles.map((article, index) => (
-                <div key={index} className="col-span-12 lg:col-span-4">
-                  <ArticleCard
-                    title={article.title}
-                    author={article.author}
-                    date={article.date}
-                    content={article.content}
-                    imgSrc={article.imgSrc}
-                  />
-                </div>
-              ))}
-            </div>
-          </TabsContent>
-          <TabsContent value="skills">
-            <MySkills />
-          </TabsContent>
-          <TabsContent value="carrier">
-            <Timeline />
-          </TabsContent>
-        </Tabs>
-        {/* </div> */}
-      </section>
-    </RootLayout>
+      {/* end of top hero */}
+      {/* <div className="flex gap-4 justify-center"> */}
+      <Tabs defaultValue="project" className="w-full">
+        <TabsList className="mb-8">
+          <TabsTrigger value="project">Projects</TabsTrigger>
+          <TabsTrigger value="skills">Skills</TabsTrigger>
+          <TabsTrigger value="carrier">Carrier</TabsTrigger>
+          <TabsTrigger value="education">Education</TabsTrigger>
+        </TabsList>
+        <TabsContent value="project">
+          <div className="grid grid-cols-12 gap-8">
+            {articles.map((article, index) => (
+              <div key={index} className="col-span-12 lg:col-span-4">
+                <ArticleCard
+                  title={article.title}
+                  author={article.author}
+                  date={article.date}
+                  content={article.content}
+                  imgSrc={article.imgSrc}
+                />
+              </div>
+            ))}
+          </div>
+        </TabsContent>
+        <TabsContent value="skills">
+          <MySkills />
+        </TabsContent>
+        <TabsContent value="carrier">
+          <Timeline />
+        </TabsContent>
+      </Tabs>
+      {/* </div> */}
+    </section>
   );
 };
 
