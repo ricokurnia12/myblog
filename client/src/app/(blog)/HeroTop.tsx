@@ -3,7 +3,6 @@ import React from "react";
 import Heroimg from "../../assets/heroimg.png";
 import Hello from "../../data/hello.md";
 import Image from "next/image";
-
 const HeroTop = () => {
   return (
     <div className="grid grid-cols-12 lg:mt-12">

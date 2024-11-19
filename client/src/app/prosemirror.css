@@ -34,8 +34,7 @@
   }
   
   .img-placeholder {
-    position: relative;
-  
+    position: relative;  
     &:before {
       content: '';
       box-sizing: border-box;

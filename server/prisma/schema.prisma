@@ -1,0 +1,49 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model blog_contents{
+  id            String @id 
+  categories    String[] // Array of integers to store multiple categories
+  title         String   
+  description   String? // Adding the new description field
+  content       String
+  slug          String @unique
+  featured_post Boolean  @default(false)
+  published     Boolean  @default(false)
+  author        String
+  images        String  
+  created_at    DateTime @default(now())
+  updated_at    DateTime @updatedAt
+  comments      blog_comments[]
+}
+
+model blog_categories {
+  id          String @id 
+  categories  String   
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+}
+
+model blog_comments {
+  id          String @id 
+  id_content  String
+  nama        String
+  email       String
+  published   Boolean
+  comment     String
+  content     blog_contents  @relation(fields: [id_content], references: [id])
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+}
